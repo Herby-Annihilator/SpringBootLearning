@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+    <title>Add mineral</title>
+</head>
+<body>
+<form th:method="post" th:action="@{/create}" th:object="${mineralViewModel}" name="mineral">
+    <div class="row">
+        <div class="col-4 d-flex flex-column">
+            <input type="image" name="mineral_image" id="mineral_image" th:src="@{/images/main_mineral.png}">
+            <a href="#">Загрузить изображение</a>
+        </div>
+        <div class="col-8">
+            <div class="form_text_item">
+                <label for="mineral_name">Наименование минерала</label>
+                <input type="text" id="mineral_name" th:field="*{name}">
+            </div>
+            <div class="form_text_item">
+                <label for="researchers">Исследователи</label>
+                <input type="text" id="researchers"th:field="*{researchers}">
+            </div>
+            <div class="form_text_item">
+                <label for="publications">Публикации</label>
+                <input type="text" id="publications" th:field="*{publications}">
+            </div>
+            <div class="form_text_item">
+                <label for="fields">Месторождения</label>
+                <input type="text" name="field" id="fields" th:fields="*{fields}">
+            </div>
+            <div class="form_text_item">
+                <label for="territories">Территории</label>
+                <input type="text" id="territories" th:field="*{territories}">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex flex-column">
+            <label for="min_description">Описание</label>
+            <textarea name="description" id="min_description" cols="30" rows="10" required placeholder="Описание" th:field="*{description}"></textarea>
+        </div>
+    </div>
+    <input type="submit" value="Submit">
+</form>
+
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

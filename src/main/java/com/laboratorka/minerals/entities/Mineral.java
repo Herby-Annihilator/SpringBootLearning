@@ -14,6 +14,27 @@ public class Mineral implements Serializable {
 
     @Column(name = "name", nullable = false)
     private String name;
+    @Column(name = "description", nullable = false, length = 1000)
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPathToImage() {
+        return pathToImage;
+    }
+
+    public void setPathToImage(String pathToImage) {
+        this.pathToImage = pathToImage;
+    }
+
+    @Column(name = "path", length = 500)
+    private String pathToImage;
 
     @ManyToMany(mappedBy = "minerals")
     private List<Field> fields;
@@ -40,12 +61,15 @@ public class Mineral implements Serializable {
         this.publications = publications;
     }
 
-    public Mineral(int id, String name, List<Field> fields, List<Ore> ores, List<Publication> publications) {
+    public Mineral(int id, String name, String description, String pathToImage,
+                   List<Field> fields, List<Ore> ores, List<Publication> publications) {
         this.id = id;
         this.name = name;
         this.fields = fields;
         this.ores = ores;
         this.publications = publications;
+        this.pathToImage = pathToImage;
+        this.description = description;
     }
 
     public List<Field> getFields() {
