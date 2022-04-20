@@ -9,7 +9,7 @@
     <title>Add mineral</title>
 </head>
 <body>
-<form th:method="post" th:action="@{/create}" th:object="${mineralViewModel}" name="mineral">
+<form th:method="post" th:action="@{create}" th:object="${mineralViewModel}" name="mineral">
     <div class="row">
         <div class="col-4 d-flex flex-column">
             <input type="image" name="mineral_image" id="mineral_image" th:src="@{/images/main_mineral.png}">

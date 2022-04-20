@@ -71,18 +71,18 @@
                             <td>19.02.2022</td>
                             <td>
                                 <button class="btn_view">
-                                    <a href="#">
+                                    <a th:href="|${mineral.id}|">
                                         <img th:src="@{/images/view.svg}" width="50" height="50" alt="">
                                     </a>
 
                                 </button>
                                 <button class="btn_edit">  <!--data-bs-toggle="modal" data-bs-target="#editMineral"-->
-                                    <a th:href="@{/create}">
+                                    <a th:href="@{create}">
                                         <img th:src="@{/images/edit.svg}" width="50" height="50" alt="">
                                     </a>
                                 </button>
                                 <button class="btn_delete">
-                                    <a th:href="|/delete/${mineral.id}|">
+                                    <a th:href="|delete/${mineral.id}|">
                                         <img th:src="@{/images/delete.svg}" width="50" height="50" alt="">
                                     </a>
                                 </button>

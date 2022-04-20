@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +52,7 @@ public class MineralController {
     public String createMineral(@ModelAttribute MineralViewModel mineralViewModel, Model model){
         Mineral mineral = FromViewModel(mineralViewModel);
         mineralRepository.save(mineral);
-        return "redirect:/admin";
+        return "redirect:all";
     }
 
     private Mineral FromViewModel(MineralViewModel mineralViewModel) {
@@ -59,19 +60,18 @@ public class MineralController {
         mineral.setId(mineralViewModel.getId());
         mineral.setName(mineralViewModel.getName());
         mineral.setDescription(mineralViewModel.getDescription());
-
+        mineral.setFields(new ArrayList<>());
+        mineral.setOres(new ArrayList<>());
+        mineral.setPublications(new ArrayList<>());
+        mineral.setPathToImage("some/path/to/some/image");
         return mineral;
     }
 
-    @DeleteMapping("delete/{id}")
-    public ModelAndView delete(@PathVariable("id") int id)
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") int id)
     {
         mineralRepository.deleteById(id);
-        return new ModelAndView("redirect:/admin");
+        return "redirect:/mineral/all";
     }
-//    @GetMapping("/error")
-//    public String getErrorText(Model model){
-//        model.addAttribute("error");
-//        return "error";
-//    }
+
 }
